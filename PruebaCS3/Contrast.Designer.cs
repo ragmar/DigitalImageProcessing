@@ -1,6 +1,6 @@
-﻿namespace PruebaCS3
+﻿namespace DigitalImageProcessing
 {
-    partial class Contraste
+    partial class Contrast
     {
         /// <summary>
         /// Required designer variable.
@@ -383,7 +383,7 @@
             this.HideL.UseVisualStyleBackColor = true;
             this.HideL.Click += new System.EventHandler(this.HideL_Click);
             // 
-            // Contraste
+            // Contrast
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -416,8 +416,8 @@
             this.Controls.Add(this.panelBlue);
             this.Controls.Add(this.panelGreen);
             this.Controls.Add(this.panelRed);
-            this.Name = "Contraste";
-            this.Text = "Contraste";
+            this.Name = "Contrast";
+            this.Text = "Contrast";
             ((System.ComponentModel.ISupportInitialize)(this.PixelRV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PositionRV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PositionGV)).EndInit();

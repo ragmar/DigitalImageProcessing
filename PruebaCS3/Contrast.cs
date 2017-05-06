@@ -7,11 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace PruebaCS3
+namespace DigitalImageProcessing
 {
-    public partial class Contraste : Form
+    public partial class Contrast : Form
     {
-        public Contraste(long[] red, long[] green, long[] blue)
+        public Contrast(long[] red, long[] green, long[] blue)
         {
             InitializeComponent();
             acepto = false;

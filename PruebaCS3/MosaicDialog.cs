@@ -7,17 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace PruebaCS3
+namespace DigitalImageProcessing
 {
-    public partial class Opciones1 : Form
+    public partial class MosaicDialog : Form
     {
 
-        public Opciones1()
+        public MosaicDialog()
         {
             InitializeComponent();
         }
 
-        private void buttonAceptar_Click(object sender, EventArgs e)
+        private void buttonOk_Click(object sender, EventArgs e)
         {
             this.Close();
         }

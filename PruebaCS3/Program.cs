@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace PruebaCS3 {
+namespace DigitalImageProcessing {
 
     class Program {
 
@@ -14,7 +14,7 @@ namespace PruebaCS3 {
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Ventana());
+            Application.Run(new DialogController());
 
         }
 

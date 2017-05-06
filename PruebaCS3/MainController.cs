@@ -7,13 +7,16 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Text;
 using System.Drawing.Imaging;
 
-namespace PruebaCS3 {
+namespace DigitalImageProcessing {
 
-    public struct Limite
+    /// <summary>
+    /// Sets the limits of the window.
+    /// </summary>
+    public struct Limit
     {
         public int x1, y1, x2, y2;
 
-        public Limite(int u1, int v1, int u2, int v2)
+        public Limit(int u1, int v1, int u2, int v2)
         {
             x1 = u1;
             y1 = v1;
@@ -22,13 +25,18 @@ namespace PruebaCS3 {
         }
     }
 
-    public class Manejador {
+    public class MainController {
 
-        public Manejador()
+        public MainController()
         {
             
         }
 
+        /// <summary>
+        /// Create a copy of an image to manipulate.
+        /// </summary>
+        /// <param name="temporalImage"></param>
+        /// <returns></returns>
         public Bitmap createExteTemp(Bitmap temporalImage)
         {
             Bitmap extendedTemp = new Bitmap(temporalImage.Width + 6, temporalImage.Height + 6);
@@ -66,7 +74,7 @@ namespace PruebaCS3 {
             int acumR, acumG, acumB, cont;
             Bitmap extendedTemp;
             extendedTemp = createExteTemp(temporalImage);
-            limpiarEE();
+            cleanEE();
             binaryEE(matrixToUse);
             acumR = acumG = acumB = cont = 0;
             for (int a = 0; a < 7; ++a)
@@ -95,6 +103,12 @@ namespace PruebaCS3 {
             return temporalImage;
         }
 
+        /// <summary>
+        /// Add noise on Image
+        /// </summary>
+        /// <param name="OriginalImage"></param>
+        /// <param name="Amount"></param>
+        /// <returns></returns>
         public static Bitmap AddNoise(Bitmap OriginalImage, int Amount)
         {
             Bitmap NewBitmap = new Bitmap(OriginalImage.Width, OriginalImage.Height);
@@ -120,6 +134,12 @@ namespace PruebaCS3 {
             return NewBitmap;
         }
 
+        /// <summary>
+        /// Create a bitmap image
+        /// </summary>
+        /// <param name="sImageText"></param>
+        /// <param name="letterSize"></param>
+        /// <returns></returns>
         private Bitmap CreateBitmapImage(string sImageText, int letterSize)
         {
             Bitmap objBmpImage = new Bitmap(1, 1);
@@ -153,6 +173,16 @@ namespace PruebaCS3 {
             return (objBmpImage);
         }
 
+        /// <summary>
+        /// Add a Speech of the comic option.
+        /// </summary>
+        /// <param name="posX"></param>
+        /// <param name="posY"></param>
+        /// <param name="m"></param>
+        /// <param name="n"></param>
+        /// <param name="p"></param>
+        /// <param name="q"></param>
+        /// <returns></returns>
         public bool speech(int posX, int posY, int m, int n, string p, int q)
         {
             Bitmap temp = (Bitmap)_currentBitmap;
@@ -176,6 +206,7 @@ namespace PruebaCS3 {
             return true;
         }
 
+
         public void escaNoUniTemp(int ancho, int alto)
         {
             Bitmap _bitmapAuxiliar = new Bitmap(ancho, alto);
@@ -195,7 +226,7 @@ namespace PruebaCS3 {
         {
             Bitmap temp = (Bitmap)_currentBitmap;
             Bitmap bmap = (Bitmap)temp.Clone();
-            /****************************************/
+
             for (int a = x1; a < x2; ++a) {
                 for (int b = y1; b < y1 + factor; ++b)
                 {
@@ -206,6 +237,7 @@ namespace PruebaCS3 {
                     bmap.SetPixel(a, b, Color.FromArgb(0, 0, 0));
                 }
             }
+
             for (int a = y1; a < y2; ++a)
             {
                 for (int b = x1; b < x1 + factor; ++b)
@@ -217,20 +249,24 @@ namespace PruebaCS3 {
                     bmap.SetPixel(b, a, Color.FromArgb(0, 0, 0));
                 }
             }
-            /****************************************/
+
             escaNoUniTemp(x2 - x1 - (2 * factor), y2 - y1 - (2 * factor));
-            //applyConvPart(0);
-            //bmap = AddNoise(bmap, 100);
+
             _temporalBitmap = AddNoise(_temporalBitmap, 50);
             _temporalBitmap = applyAverTemp(_temporalBitmap, 0);
             for(int a = x1 + factor; a < x2 - factor; ++a)
                 for(int b = y1 + factor; b < y2 - factor; ++b)
                     bmap.SetPixel(a, b, _temporalBitmap.GetPixel(a - (x1 + factor), b - (y1 + factor)));
-            //bmap = AddNoise(bmap, 50);
+
             _currentBitmap = (Bitmap)bmap.Clone();
             _originalBitmap = (Bitmap)bmap.Clone();
         }
 
+        /// <summary>
+        /// Create blank page for the comic option.
+        /// </summary>
+        /// <param name="m"></param>
+        /// <param name="n"></param>
         public void createBlankPage(int m, int n)
         {
             Bitmap bmap = new Bitmap(m, n);
@@ -241,19 +277,25 @@ namespace PruebaCS3 {
             _originalBitmap = (Bitmap)bmap.Clone();
         }
 
-        public void escaNoUniforme(int ancho, int alto, int posicion)
+        /// <summary>
+        /// No Uniform Scale
+        /// </summary>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        /// <param name="position"></param>
+        public void escaNoUniforme(int width, int height, int position)
         {
-            Bitmap _bitmapAuxiliar = new Bitmap(ancho, alto);
-            double fancho = ((double)_bitmapBD[posicion].Width) / ((double)ancho);
-            double falto = ((double)_bitmapBD[posicion].Height) / ((double)alto);
-            for (int a = 0; a < ancho; ++a)
+            Bitmap _bitmapAuxiliar = new Bitmap(width, height);
+            double fancho = ((double)_bitmapBD[position].Width) / ((double)width);
+            double falto = ((double)_bitmapBD[position].Height) / ((double)height);
+            for (int a = 0; a < width; ++a)
             {
-                for (int b = 0; b < alto; ++b)
+                for (int b = 0; b < height; ++b)
                 {
-                    _bitmapAuxiliar.SetPixel(a, b, _bitmapBD[posicion].GetPixel(((int)(a * fancho)), ((int)(b * falto))));
+                    _bitmapAuxiliar.SetPixel(a, b, _bitmapBD[position].GetPixel(((int)(a * fancho)), ((int)(b * falto))));
                 }
             }
-            _bitmapBD[posicion] = (Bitmap)_bitmapAuxiliar.Clone();
+            _bitmapBD[position] = (Bitmap)_bitmapAuxiliar.Clone();
         }
         
         public void pintarSubImagen(int iniX, int iniY, int finX, int finY, int posicion)
@@ -283,17 +325,23 @@ namespace PruebaCS3 {
             return posicion;
         }
 
-        public void generatePrecalculus(string[] archivos, int newWidth, int newHeight)
+        /// <summary>
+        /// Precalculous for Mosaic
+        /// </summary>
+        /// <param name="archivos"></param>
+        /// <param name="newWidth"></param>
+        /// <param name="newHeight"></param>
+        public void generatePrecalculus(string[] files, int newWidth, int newHeight)
         {
             double red, green, blue, wXh;
-            promediosBD = new double[archivos.Length];
+            promediosBD = new double[files.Length];
             red = green = blue = 0.0;
             int archivosLength, bitmapAuxWidth, bitmapAuxHeight;
-            archivosLength = archivos.Length;
-            _bitmapBD = new Bitmap[archivos.Length];
+            archivosLength = files.Length;
+            _bitmapBD = new Bitmap[files.Length];
             for (int a = 0; a < archivosLength; ++a)
             {
-                _bitmapBD[a] = (Bitmap)Bitmap.FromFile(archivos[a]);
+                _bitmapBD[a] = (Bitmap)Bitmap.FromFile(files[a]);
                 escaNoUniforme(newWidth, newHeight, a);
                 bitmapAuxWidth = _bitmapBD[a].Width;
                 for (int b = 0; b < bitmapAuxWidth; ++b)
@@ -311,10 +359,15 @@ namespace PruebaCS3 {
                 green /= wXh;
                 blue /= wXh;
                 promediosBD[a] = (red + green + blue) / 3.0;
-                Console.WriteLine("Iteracion {0} lista.", a);
+                Console.WriteLine("Iteration {0} done.", a);
             }
         }
 
+        /// <summary>
+        /// Mosaic Generator
+        /// </summary>
+        /// <param name="horizontal"></param>
+        /// <param name="vertical"></param>
         public void generateMosaic(int horizontal, int vertical)
         {
             int posicion, currentBitmapWidth, currentBitmapHeight;
@@ -366,13 +419,18 @@ namespace PruebaCS3 {
                                     ((_bitmapAux.Height / vertical) * b) + (_bitmapAux.Height / vertical),
                                     posicion
                                     );
-                    Console.WriteLine("Iteracion ({0}, {1}) lista.", a, b);
+                    Console.WriteLine("Iteration ({0}, {1}) done.", a, b);
                 }
             }
             _currentBitmap = (Bitmap)_bitmapAux.Clone();
             _originalBitmap = (Bitmap)_bitmapAux.Clone();
         }
 
+        /// <summary>
+        /// apply filter TopHat on the Bitmap
+        /// </summary>
+        /// <param name="matrixToUse"></param>
+        /// <param name="which"></param>
         public void applyTopHat(int matrixToUse, int which)
         {
             Bitmap temp = (Bitmap)_currentBitmap;
@@ -421,6 +479,9 @@ namespace PruebaCS3 {
             _originalBitmap = (Bitmap)bmap.Clone();
         }
 
+        /// <summary>
+        /// Create a copy in grayscale of the bitmap
+        /// </summary>
         public void createGrayscaleCopy()
         {
             _copy = new Bitmap(_currentBitmap.Width, _currentBitmap.Height);
@@ -436,6 +497,9 @@ namespace PruebaCS3 {
             }
         }
 
+        /// <summary>
+        /// Create a copy of the current Bitmap
+        /// </summary>
         public void createCopy()
         {
             _copy = new Bitmap(_currentBitmap.Width, _currentBitmap.Height);
@@ -453,6 +517,9 @@ namespace PruebaCS3 {
             }
         }
 
+        /// <summary>
+        /// Matrix of Laplace 8
+        /// </summary>
         public void laplace8()
         {
             eeM[2, 2] = -1;
@@ -466,6 +533,9 @@ namespace PruebaCS3 {
             eeM[4, 4] = -1;
         }
 
+        /// <summary>
+        /// Matrix of laplace 4
+        /// </summary>
         public void laplace4()
         {
             eeM[2, 2] = 0;
@@ -479,13 +549,17 @@ namespace PruebaCS3 {
             eeM[4, 4] = 0;
         }
 
+        /// <summary>
+        /// Apply filter Median on the bitmap
+        /// </summary>
+        /// <param name="matrixToUse"></param>
         public void applyMedian(int matrixToUse)
         {
             Color c;
             int acumR, acumG, acumB, cont;
             Bitmap temp = (Bitmap)_currentBitmap;
             Bitmap bmap = (Bitmap)temp.Clone();
-            limpiarEE();
+            cleanEE();
             binaryEE(matrixToUse);
             acumR = acumG = acumB = cont = 0;
             for (int a = 0; a < 7; ++a)
@@ -545,13 +619,17 @@ namespace PruebaCS3 {
             return c;
         }
 
+        /// <summary>
+        /// Apply filter Average on the bitmap
+        /// </summary>
+        /// <param name="matrixToUse"></param>
         public void applyAverage(int matrixToUse)
         {
             Color c;
             int acumR, acumG, acumB, cont;
             Bitmap temp = (Bitmap)_currentBitmap;
             Bitmap bmap = (Bitmap)temp.Clone();
-            limpiarEE();
+            cleanEE();
             binaryEE(matrixToUse);
             acumR = acumG = acumB = cont = 0;
             for (int a = 0; a < 7; ++a)
@@ -581,20 +659,24 @@ namespace PruebaCS3 {
             _originalBitmap = (Bitmap)bmap.Clone();
         }
 
+        /// <summary>
+        /// Apply filter erosion on the bitmap
+        /// </summary>
+        /// <param name="matrixToUse"></param>
         public void applyErosion(int matrixToUse)
         {
             Bitmap temp = (Bitmap)_currentBitmap;
             Bitmap bmap = (Bitmap)temp.Clone();
             int x;
             int y;
-            limpiarEE();
+            cleanEE();
             binaryEE(matrixToUse);
             for (int a = 3; a < _extended.Width - 3; ++a)
                 for (int b = 3; b < _extended.Height - 3; ++b)
                     if (_extended.GetPixel(a, b).R == 255)
-                    // Si el pixel es blanco, verifico que el eeM quepa en la imagen
-                    // Si cabe, no hago nada
-                    // Si no cabe, pinto los elementos del eeM en la imagen, de negro
+                    /* If the pixel is white, verify eeM can be in the image
+                     If it can be, nothing has to be done
+                     If i can't be, draw the elements of the eeM black in the image*/
                     {
                         if (
                             (eeM[2, 2] == 255 && _extended.GetPixel(a - 1, b - 1).R == 0) ||
@@ -644,17 +726,21 @@ namespace PruebaCS3 {
             _originalBitmap = (Bitmap)bmap.Clone();
         }
 
+        /// <summary>
+        /// Apply filter dilatation on the image
+        /// </summary>
+        /// <param name="matrixToUse"></param>
         public void applyDilation(int matrixToUse)
         {
             Bitmap temp = (Bitmap)_currentBitmap;
             Bitmap bmap = (Bitmap)temp.Clone();
             int x;
             int y;
-            limpiarEE();
+            cleanEE();
             binaryEE(matrixToUse);
             for (int a = 3; a < _extended.Width - 3; ++a)
                 for (int b = 3; b < _extended.Height - 3; ++b)
-                    if (_extended.GetPixel(a, b).R == 255) // Si el pixel es blanco, pinto los elementos del eeM en la imagen, de blanco
+                    if (_extended.GetPixel(a, b).R == 255) // If the pixel is white draw the elements of the eeM white in the image
                     {
                         x = a - 1 - 3;
                         y = b - 1 - 3;
@@ -694,7 +780,7 @@ namespace PruebaCS3 {
         public void binaryEE(int matrixToUse)
         {
             if (matrixToUse == 0)
-            {              // Ones
+            {              // Matrix of ones
                 eeM[2, 2] = 255;
                 eeM[2, 3] = 255;
                 eeM[2, 4] = 255;
@@ -706,13 +792,13 @@ namespace PruebaCS3 {
                 eeM[4, 4] = 255;
             }
             else if (matrixToUse == 1)
-            {       // Identity
+            {       // Identity Matrix
                 eeM[2, 2] = 255;
                 eeM[3, 3] = 255;
                 eeM[4, 4] = 255;
             }
             else if (matrixToUse == 2)
-            {      // Cross
+            {      // Cross Matrix
                 eeM[2, 3] = 255;
                 eeM[3, 2] = 255;
                 eeM[3, 3] = 255;
@@ -720,7 +806,7 @@ namespace PruebaCS3 {
                 eeM[4, 3] = 255;
             }
             else
-            {                            // X
+            {   // X Matrix
                 eeM[2, 2] = 255;
                 eeM[2, 4] = 255;
                 eeM[3, 3] = 255;
@@ -729,6 +815,9 @@ namespace PruebaCS3 {
             }
         }
 
+        /// <summary>
+        /// Apply custom Matrix on current image
+        /// </summary>
         public void applyCustomMatrix()
         {
             Bitmap temp = (Bitmap)_currentBitmap;
@@ -788,6 +877,10 @@ namespace PruebaCS3 {
             eeX[4, 4] = -1;
         }
 
+        /// <summary>
+        /// Apply filet convolution on the current image
+        /// </summary>
+        /// <param name="mask"></param>
         public void applyConvolution(int mask)
         {
             Bitmap temp = (Bitmap)_currentBitmap;
@@ -795,7 +888,7 @@ namespace PruebaCS3 {
             Color c, cx, cy;
             double red, green, blue;
             red = green = blue = 0;
-            limpiarEE();
+            cleanEE();
             if (mask == 0)
             {
                 sobelGXEE();
@@ -941,7 +1034,7 @@ namespace PruebaCS3 {
             return Color.FromArgb(red, green, blue);
         }
 
-        public void limpiarEE()
+        public void cleanEE()
         {
             for (int a = 0; a < 7; ++a)
             {
@@ -954,6 +1047,9 @@ namespace PruebaCS3 {
             }
         }
 
+        /// <summary>
+        /// Apply filter binarize on the current image
+        /// </summary>
         public void binarize()
         {
             Bitmap temp = (Bitmap)_currentBitmap;
@@ -1012,7 +1108,7 @@ namespace PruebaCS3 {
             return true;
         }
 
-        public void crearEE()
+        public void createEE()
         {
             eeM = new int[7, 7];
             eeC = new int[7, 7];
@@ -1110,6 +1206,9 @@ namespace PruebaCS3 {
             _bitmapbeforeProcessing = _currentBitmap;
         }
 
+        /// <summary>
+        /// Get current histogram of the image
+        /// </summary>
         public void GetHistogram()
         {
             System.Drawing.Bitmap picture = this.CurrentBitmap;
@@ -1140,6 +1239,9 @@ namespace PruebaCS3 {
             }
         }
 
+        /// <summary>
+        /// Apply filter Grayscale on current image
+        /// </summary>
         public void setGrayscale()
         {
             Bitmap temp = (Bitmap)_currentBitmap;
@@ -1166,6 +1268,9 @@ namespace PruebaCS3 {
             _originalBitmap = (Bitmap)bmap.Clone();
         }
 
+        /// <summary>
+        /// Apply filter Equialization on current image
+        /// </summary>
         public void setEqualization()
         {
             float[] redH = new float[256];
@@ -1227,6 +1332,15 @@ namespace PruebaCS3 {
             _originalBitmap = (Bitmap)bmap.Clone();
         }
 
+        /// <summary>
+        /// Apply filter Contrast on current image
+        /// </summary>
+        /// <param name="minR"></param>
+        /// <param name="maxR"></param>
+        /// <param name="minG"></param>
+        /// <param name="maxG"></param>
+        /// <param name="minB"></param>
+        /// <param name="maxB"></param>
         public void setContrast(int minR, int maxR, int minG, int maxG, int minB, int maxB)
         {
             Bitmap temp = (Bitmap)_currentBitmap;
@@ -1253,7 +1367,7 @@ namespace PruebaCS3 {
             _originalBitmap = (Bitmap)bmap.Clone();
         }
 
-        public Color interpolar(double x, double y) //  Escalando hacia arriba
+        public Color interpolar(double x, double y) //  Up Scale interpolation
         {
             Color cv00, cv10, cv01, cv11, cr, cs, cp;
             int v00x, v00y, v01x, v01y, v10x, v10y, v11x, v11y;
@@ -1291,6 +1405,11 @@ namespace PruebaCS3 {
             return cp;
         }
 
+        /// <summary>
+        /// Scale current image
+        /// </summary>
+        /// <param name="esca"></param>
+        /// <param name="iterar"></param>
         public void scaleImage(double esca, bool iterar)
         {
             _currentBitmap = _originalBitmap;
@@ -1309,33 +1428,33 @@ namespace PruebaCS3 {
             double fy = ((double)h2) / ((double)h1);
             if (escalamiento < 1)
             {
-                matrizA = new int[w2, h2];
-                matrizR = new int[w2, h2];
-                matrizG = new int[w2, h2];
-                matrizB = new int[w2, h2];
+                matrixA = new int[w2, h2];
+                matrixR = new int[w2, h2];
+                matrixG = new int[w2, h2];
+                matrixB = new int[w2, h2];
                 Color c;
                 for (int x = 0; x < w2; ++x)
                     for (int y = 0; y < h2; ++y)
                     {
-                        matrizA[x, y] = matrizR[x, y] = matrizG[x, y] = matrizB[x, y] = 0;
+                        matrixA[x, y] = matrixR[x, y] = matrixG[x, y] = matrixB[x, y] = 0;
                         bm.SetPixel(x, y, Color.Black);
                     }
                 for (int x = 0; x < w1; ++x)
                     for (int y = 0; y < h1; ++y)
                     {
                         c = _currentBitmap.GetPixel(x, y);
-                        matrizA[(int)(((double)x) * fx), (int)(((double)y) * fy)]++;
-                        matrizR[(int)(((double)x) * fx), (int)(((double)y) * fy)] += c.R;
-                        matrizG[(int)(((double)x) * fx), (int)(((double)y) * fy)] += c.G;
-                        matrizB[(int)(((double)x) * fx), (int)(((double)y) * fy)] += c.B;
+                        matrixA[(int)(((double)x) * fx), (int)(((double)y) * fy)]++;
+                        matrixR[(int)(((double)x) * fx), (int)(((double)y) * fy)] += c.R;
+                        matrixG[(int)(((double)x) * fx), (int)(((double)y) * fy)] += c.G;
+                        matrixB[(int)(((double)x) * fx), (int)(((double)y) * fy)] += c.B;
                     }
                 for (int x = 0; x < w2; ++x)
                     for (int y = 0; y < h2; ++y)
                     {
-                        matrizR[x, y] /= matrizA[x, y];
-                        matrizG[x, y] /= matrizA[x, y];
-                        matrizB[x, y] /= matrizA[x, y];
-                        c = Color.FromArgb(matrizR[x, y], matrizG[x, y], matrizB[x, y]);
+                        matrixR[x, y] /= matrixA[x, y];
+                        matrixG[x, y] /= matrixA[x, y];
+                        matrixB[x, y] /= matrixA[x, y];
+                        c = Color.FromArgb(matrixR[x, y], matrixG[x, y], matrixB[x, y]);
                         bm.SetPixel(x, y, c);
                     }
                 _currentBitmap = (Bitmap)bm.Clone();
@@ -1349,6 +1468,11 @@ namespace PruebaCS3 {
             }
         }
 
+        /// <summary>
+        /// Rotate current image
+        /// </summary>
+        /// <param name="alfa"></param>
+        /// <param name="iterar"></param>
         public void rotateAlfa(double alfa, bool iterar)
         {
             Color c = Color.FromArgb(0, 0, 0);
@@ -1533,15 +1657,15 @@ namespace PruebaCS3 {
         public long[] greenH = new long[256];
         public long[] blueH = new long[256];
         public long colors;
-        public int[,] matrizA;
-        public int[,] matrizR;
-        public int[,] matrizG;
-        public int[,] matrizB;
+        public int[,] matrixA;
+        public int[,] matrixR;
+        public int[,] matrixG;
+        public int[,] matrixB;
         public int[,] eeM;
         public int[,] eeC;
         public int[,] eeX;
         public int[,] eeY;
-        public List<Limite> lim;
+        public List<Limit> list_Limit;
 
     }
 
