@@ -8,8 +8,8 @@
     <ProjectGuid>{CC0C5281-7A7B-4E05-BAE1-D6DEC4B00D2C}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PruebaCS3</RootNamespace>
-    <AssemblyName>PruebaCS3</AssemblyName>
+    <RootNamespace>DigitalImageProcessing</RootNamespace>
+    <AssemblyName>DigitalImageProcessing</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <PublishUrl>publish\</PublishUrl>
@@ -97,14 +97,14 @@
     <Compile Include="Information.Designer.cs">
       <DependentUpon>Information.cs</DependentUpon>
     </Compile>
-    <Compile Include="Manejador.cs" />
+    <Compile Include="MainController.cs" />
     <Compile Include="MosaicDialog.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MosaicDialog.designer.cs">
       <DependentUpon>MosaicDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Main.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Dialog.cs">
       <SubType>Form</SubType>

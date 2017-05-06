@@ -9,15 +9,15 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 
-namespace PruebaCS3
+namespace DigitalImageProcessing
 {
 
     public partial class Information : Form
     {
 
-        Manejador imageHandler;
+        MainController imageHandler;
 
-        public Information(Manejador imageHandler)
+        public Information(MainController imageHandler)
         {
             this.imageHandler = imageHandler;
             InitializeComponent();

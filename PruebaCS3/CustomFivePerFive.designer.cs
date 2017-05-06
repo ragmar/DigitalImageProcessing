@@ -1,4 +1,4 @@
-﻿namespace PruebaCS3
+﻿namespace DigitalImageProcessing
 {
     partial class CustomFivePerFive
     {
@@ -46,7 +46,7 @@
             this.labelIndications.AutoSize = true;
             this.labelIndications.Location = new System.Drawing.Point(10, 10);
             this.labelIndications.Name = "labelIndications";
-            this.labelIndications.Text = "Please, create the matriz to apply the Convolution:";
+            this.labelIndications.Text = "Please, create the matrix to apply the Convolution:";
 
             this.buttonOk.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)

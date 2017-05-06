@@ -1,5 +1,5 @@
 ﻿
-namespace PruebaCS3
+namespace DigitalImageProcessing
 {
     partial class Information
     {

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace PruebaCS3
+namespace DigitalImageProcessing
 {
     public partial class MosaicDialog : Form
     {

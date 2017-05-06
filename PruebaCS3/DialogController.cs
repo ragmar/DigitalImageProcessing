@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace PruebaCS3 {
+namespace DigitalImageProcessing {
 
     public partial class DialogController : Form {
 
@@ -26,7 +26,7 @@ namespace PruebaCS3 {
             sDlg.InitialDirectory = "C:\\";
             sDlg.FilterIndex = 1;
             sDlg.Filter = "jpg files (*.jpg)|*.jpg|jpeg files (*.jpeg)|*.jpeg|png files (*.png)|*.png|bmp files (*.bmp)|*.bmp";
-            imageHandler.crearEE();
+            imageHandler.createEE();
             imageHandler.firstExtended();
             menuItemDilation.Enabled = menuItemErosion.Enabled = menuItemOpening.Enabled = menuItemClosing.Enabled = false;
             primeraVez = true;
@@ -40,7 +40,7 @@ namespace PruebaCS3 {
             menuItemThought.Enabled = false;
             menuItemScream.Enabled = false;
             cantidad = 0;
-            imageHandler.lim = new List<Limite>();
+            imageHandler.list_Limit = new List<Limit>();
         }
 
         private static string[] GetFiles(string sourceFolder, string filters, System.IO.SearchOption searchOption)
@@ -96,17 +96,17 @@ namespace PruebaCS3 {
 
         private bool insideFrames2(int x, int y, int m, int n)
         {
-            for (int a = 0; a < imageHandler.lim.Count; ++a)
+            for (int a = 0; a < imageHandler.list_Limit.Count; ++a)
             {
                 if (
-                    ((imageHandler.lim.ElementAt(a).x1 <= x && x <= imageHandler.lim.ElementAt(a).x2) &&
-                    (imageHandler.lim.ElementAt(a).y1 <= y && y <= imageHandler.lim.ElementAt(a).y2)) &&
-                    ((imageHandler.lim.ElementAt(a).x1 <= x + m && x + m <= imageHandler.lim.ElementAt(a).x2) &&
-                    (imageHandler.lim.ElementAt(a).y1 <= y && y <= imageHandler.lim.ElementAt(a).y2)) &&
-                    ((imageHandler.lim.ElementAt(a).x1 <= x && x <= imageHandler.lim.ElementAt(a).x2) &&
-                    (imageHandler.lim.ElementAt(a).y1 <= y + n && y + n <= imageHandler.lim.ElementAt(a).y2)) &&
-                    ((imageHandler.lim.ElementAt(a).x1 <= x + m && x + m <= imageHandler.lim.ElementAt(a).x2) &&
-                    (imageHandler.lim.ElementAt(a).y1 <= y + n && y + n <= imageHandler.lim.ElementAt(a).y2))
+                    ((imageHandler.list_Limit.ElementAt(a).x1 <= x && x <= imageHandler.list_Limit.ElementAt(a).x2) &&
+                    (imageHandler.list_Limit.ElementAt(a).y1 <= y && y <= imageHandler.list_Limit.ElementAt(a).y2)) &&
+                    ((imageHandler.list_Limit.ElementAt(a).x1 <= x + m && x + m <= imageHandler.list_Limit.ElementAt(a).x2) &&
+                    (imageHandler.list_Limit.ElementAt(a).y1 <= y && y <= imageHandler.list_Limit.ElementAt(a).y2)) &&
+                    ((imageHandler.list_Limit.ElementAt(a).x1 <= x && x <= imageHandler.list_Limit.ElementAt(a).x2) &&
+                    (imageHandler.list_Limit.ElementAt(a).y1 <= y + n && y + n <= imageHandler.list_Limit.ElementAt(a).y2)) &&
+                    ((imageHandler.list_Limit.ElementAt(a).x1 <= x + m && x + m <= imageHandler.list_Limit.ElementAt(a).x2) &&
+                    (imageHandler.list_Limit.ElementAt(a).y1 <= y + n && y + n <= imageHandler.list_Limit.ElementAt(a).y2))
                     )
                     return true;
             }
@@ -115,17 +115,17 @@ namespace PruebaCS3 {
 
         private bool insideFrames(int x1, int y1, int x2, int y2)
         {
-            for (int a = 0; a < imageHandler.lim.Count; ++a)
+            for (int a = 0; a < imageHandler.list_Limit.Count; ++a)
             {
                 if (
-                    ((imageHandler.lim.ElementAt(a).x1 <= x1 && x1 <= imageHandler.lim.ElementAt(a).x2) &&
-                    (imageHandler.lim.ElementAt(a).y1 <= y1 && y1 <= imageHandler.lim.ElementAt(a).y2)) ||
-                    ((imageHandler.lim.ElementAt(a).x1 <= x2 && x2 <= imageHandler.lim.ElementAt(a).x2) &&
-                    (imageHandler.lim.ElementAt(a).y1 <= y1 && y1 <= imageHandler.lim.ElementAt(a).y2)) ||
-                    ((imageHandler.lim.ElementAt(a).x1 <= x1 && x1 <= imageHandler.lim.ElementAt(a).x2) &&
-                    (imageHandler.lim.ElementAt(a).y1 <= y2 && y2 <= imageHandler.lim.ElementAt(a).y2)) ||
-                    ((imageHandler.lim.ElementAt(a).x1 <= x2 && x2 <= imageHandler.lim.ElementAt(a).x2) &&
-                    (imageHandler.lim.ElementAt(a).y1 <= y2 && y2 <= imageHandler.lim.ElementAt(a).y2))
+                    ((imageHandler.list_Limit.ElementAt(a).x1 <= x1 && x1 <= imageHandler.list_Limit.ElementAt(a).x2) &&
+                    (imageHandler.list_Limit.ElementAt(a).y1 <= y1 && y1 <= imageHandler.list_Limit.ElementAt(a).y2)) ||
+                    ((imageHandler.list_Limit.ElementAt(a).x1 <= x2 && x2 <= imageHandler.list_Limit.ElementAt(a).x2) &&
+                    (imageHandler.list_Limit.ElementAt(a).y1 <= y1 && y1 <= imageHandler.list_Limit.ElementAt(a).y2)) ||
+                    ((imageHandler.list_Limit.ElementAt(a).x1 <= x1 && x1 <= imageHandler.list_Limit.ElementAt(a).x2) &&
+                    (imageHandler.list_Limit.ElementAt(a).y1 <= y2 && y2 <= imageHandler.list_Limit.ElementAt(a).y2)) ||
+                    ((imageHandler.list_Limit.ElementAt(a).x1 <= x2 && x2 <= imageHandler.list_Limit.ElementAt(a).x2) &&
+                    (imageHandler.list_Limit.ElementAt(a).y1 <= y2 && y2 <= imageHandler.list_Limit.ElementAt(a).y2))
                     )
                     return true;
             }
@@ -234,7 +234,7 @@ namespace PruebaCS3 {
                         if (!outsideP && !insideF && !factorNoV)
                         {
                             imageHandler.frame(factor, x1, y1, x2, y2);
-                            imageHandler.lim.Add(new Limite(x1, y1, x2, y2));
+                            imageHandler.list_Limit.Add(new Limit(x1, y1, x2, y2));
                         }
                         if (outsideP)
                             MessageBox.Show("Position outside the paper");
@@ -536,7 +536,7 @@ namespace PruebaCS3 {
                     vectorEnviar[a] = (int)tpt.numericUpDown[a].Value;
                 pulsoAceptar = tpt.pulsoAceptar;
                 if (!pulsoAceptar)
-                    MessageBox.Show("Please, chose the matriz to apply the convolution", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Please, chose the matrix to apply the convolution", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             } while (!pulsoAceptar);
             for (int a = 0; a < 7; ++a)
             {
@@ -577,7 +577,7 @@ namespace PruebaCS3 {
                     vectorEnviar[a] = (int)tpt.numericUpDown[a].Value;
                 pulsoAceptar = tpt.pulsoAceptar;
                 if (!pulsoAceptar)
-                    MessageBox.Show("Please, chose the matriz to apply the convolution", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Please, chose the matrix to apply the convolution", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             } while (!pulsoAceptar);
             for (int a = 0; a < 7; ++a)
             {
@@ -618,7 +618,7 @@ namespace PruebaCS3 {
                     vectorEnviar[a] = (int)tpt.numericUpDown[a].Value;
                 pulsoAceptar = tpt.pulsoAceptar;
                 if (!pulsoAceptar)
-                    MessageBox.Show("Please, chose the matriz to apply the convolution", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Please, chose the matrix to apply the convolution", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             } while (!pulsoAceptar);
             for (int a = 0; a < 7; ++a)
             {
@@ -783,7 +783,7 @@ namespace PruebaCS3 {
             bool entradaExitosa;
             int m;
             int n;
-            imageHandler.lim.Clear();
+            imageHandler.list_Limit.Clear();
             do
             {
                 Dimensions dim = new Dimensions();
@@ -959,8 +959,8 @@ namespace PruebaCS3 {
         int lastX;
         int lastY;
         int cantidad;
-        Manejador imageHandler = new Manejador();
-        Manejador imageOriginal = new Manejador();
+        MainController imageHandler = new MainController();
+        MainController imageOriginal = new MainController();
 
     }
 

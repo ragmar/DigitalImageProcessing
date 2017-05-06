@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace PruebaCS3 {
+namespace DigitalImageProcessing {
 
     class Program {
 
