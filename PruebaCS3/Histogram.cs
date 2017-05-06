@@ -7,12 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace PruebaCS3
+namespace DigitalImageProcessing
 {
-    public partial class Histogramas : Form
+    public partial class Histogram : Form
     {
 
-        public Histogramas(long[] red, long[] green, long[] blue)
+        public Histogram(long[] red, long[] green, long[] blue)
         {
             InitializeComponent();
 

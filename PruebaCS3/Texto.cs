@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace PruebaCS3
+namespace DigitalImageProcessing
 {
     public partial class Texto : Form
     {
@@ -16,7 +16,7 @@ namespace PruebaCS3
             InitializeComponent();
         }
 
-        private void buttonAceptar_Click(object sender, EventArgs e)
+        private void buttonOk_Click(object sender, EventArgs e)
         {
             string z;
             entradaExitosa = true;

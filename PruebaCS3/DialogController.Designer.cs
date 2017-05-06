@@ -1,7 +1,7 @@
 ﻿
-namespace PruebaCS3 {
+namespace DigitalImageProcessing {
 
-    partial class Ventana {
+    partial class DialogController {
 
         protected override void Dispose(bool disposing) {
             if (disposing && (components != null))

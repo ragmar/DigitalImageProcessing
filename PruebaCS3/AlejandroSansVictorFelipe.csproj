@@ -8,8 +8,8 @@
     <ProjectGuid>{CC0C5281-7A7B-4E05-BAE1-D6DEC4B00D2C}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PruebaCS3</RootNamespace>
-    <AssemblyName>PruebaCS3</AssemblyName>
+    <RootNamespace>DigitalImageProcessing</RootNamespace>
+    <AssemblyName>DigitalImageProcessing</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <PublishUrl>publish\</PublishUrl>
@@ -67,56 +67,56 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CincoPorCinco.cs">
+    <Compile Include="Contrast.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CincoPorCinco.Designer.cs">
-      <DependentUpon>CincoPorCinco.cs</DependentUpon>
+    <Compile Include="Contrast.Designer.cs">
+      <DependentUpon>Contrast.cs</DependentUpon>
     </Compile>
-    <Compile Include="Contraste.cs">
+    <Compile Include="CustomFivePerFive.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Contraste.Designer.cs">
-      <DependentUpon>Contraste.cs</DependentUpon>
+    <Compile Include="CustomFivePerFive.designer.cs">
+      <DependentUpon>CustomFivePerFive.cs</DependentUpon>
     </Compile>
-    <Compile Include="Dimensiones.cs">
+    <Compile Include="Dimensions.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Dimensiones.Designer.cs">
-      <DependentUpon>Dimensiones.cs</DependentUpon>
+    <Compile Include="Dimensions.Designer.cs">
+      <DependentUpon>Dimensions.cs</DependentUpon>
     </Compile>
-    <Compile Include="Histogramas.cs">
+    <Compile Include="Histogram.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Histogramas.Designer.cs">
-      <DependentUpon>Histogramas.cs</DependentUpon>
+    <Compile Include="Histogram.Designer.cs">
+      <DependentUpon>Histogram.cs</DependentUpon>
     </Compile>
-    <Compile Include="Informacion.cs">
+    <Compile Include="Information.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Informacion.Designer.cs">
-      <DependentUpon>Informacion.cs</DependentUpon>
+    <Compile Include="Information.Designer.cs">
+      <DependentUpon>Information.cs</DependentUpon>
     </Compile>
-    <Compile Include="Manejador.cs" />
-    <Compile Include="Opciones1.cs">
+    <Compile Include="MainController.cs" />
+    <Compile Include="MosaicDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Opciones1.Designer.cs">
-      <DependentUpon>Opciones1.cs</DependentUpon>
+    <Compile Include="MosaicDialog.designer.cs">
+      <DependentUpon>MosaicDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Dialogo.cs">
+    <Compile Include="Dialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Dialogo.Designer.cs">
-      <DependentUpon>Dialogo.cs</DependentUpon>
+    <Compile Include="Dialog.Designer.cs">
+      <DependentUpon>Dialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="SietePorSiete.cs">
+    <Compile Include="CustomSevenPerSeven.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SietePorSiete.Designer.cs">
-      <DependentUpon>SietePorSiete.cs</DependentUpon>
+    <Compile Include="CustomSevenPerSeven.Designer.cs">
+      <DependentUpon>CustomSevenPerSeven.cs</DependentUpon>
     </Compile>
     <Compile Include="Texto.cs">
       <SubType>Form</SubType>
@@ -124,37 +124,40 @@
     <Compile Include="Texto.Designer.cs">
       <DependentUpon>Texto.cs</DependentUpon>
     </Compile>
-    <Compile Include="TresPorTres.cs">
+    <Compile Include="ThreePerThree.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TresPorTres.Designer.cs">
-      <DependentUpon>TresPorTres.cs</DependentUpon>
+    <Compile Include="ThreePerThree.Designer.cs">
+      <DependentUpon>ThreePerThree.cs</DependentUpon>
     </Compile>
-    <Compile Include="Ventana.cs">
+    <Compile Include="DialogController.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Ventana.Designer.cs">
-      <DependentUpon>Ventana.cs</DependentUpon>
+    <Compile Include="DialogController.Designer.cs">
+      <DependentUpon>DialogController.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Contraste.resx">
-      <DependentUpon>Contraste.cs</DependentUpon>
+    <EmbeddedResource Include="Contrast.resx">
+      <DependentUpon>Contrast.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Histogramas.resx">
-      <DependentUpon>Histogramas.cs</DependentUpon>
+    <EmbeddedResource Include="CustomFivePerFive.resx">
+      <DependentUpon>CustomFivePerFive.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Informacion.resx">
-      <DependentUpon>Informacion.cs</DependentUpon>
+    <EmbeddedResource Include="Histogram.resx">
+      <DependentUpon>Histogram.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Opciones1.resx">
-      <DependentUpon>Opciones1.cs</DependentUpon>
+    <EmbeddedResource Include="Information.resx">
+      <DependentUpon>Information.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TresPorTres.resx">
-      <DependentUpon>TresPorTres.cs</DependentUpon>
+    <EmbeddedResource Include="MosaicDialog.resx">
+      <DependentUpon>MosaicDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Ventana.resx">
-      <DependentUpon>Ventana.cs</DependentUpon>
+    <EmbeddedResource Include="ThreePerThree.resx">
+      <DependentUpon>ThreePerThree.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogController.resx">
+      <DependentUpon>DialogController.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

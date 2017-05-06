@@ -8,11 +8,11 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace PruebaCS3 {
+namespace DigitalImageProcessing {
 
-    public partial class Ventana : Form {
+    public partial class DialogController : Form {
 
-        public Ventana() {
+        public DialogController() {
             InitializeComponent();
             puedoTransformar = false;
             oDlg = new OpenFileDialog(); // Open Dialog Initialization
@@ -26,7 +26,7 @@ namespace PruebaCS3 {
             sDlg.InitialDirectory = "C:\\";
             sDlg.FilterIndex = 1;
             sDlg.Filter = "jpg files (*.jpg)|*.jpg|jpeg files (*.jpeg)|*.jpeg|png files (*.png)|*.png|bmp files (*.bmp)|*.bmp";
-            imageHandler.crearEE();
+            imageHandler.createEE();
             imageHandler.firstExtended();
             menuItemDilation.Enabled = menuItemErosion.Enabled = menuItemOpening.Enabled = menuItemClosing.Enabled = false;
             primeraVez = true;
@@ -40,7 +40,7 @@ namespace PruebaCS3 {
             menuItemThought.Enabled = false;
             menuItemScream.Enabled = false;
             cantidad = 0;
-            imageHandler.lim = new List<Limite>();
+            imageHandler.list_Limit = new List<Limit>();
         }
 
         private static string[] GetFiles(string sourceFolder, string filters, System.IO.SearchOption searchOption)
@@ -96,17 +96,17 @@ namespace PruebaCS3 {
 
         private bool insideFrames2(int x, int y, int m, int n)
         {
-            for (int a = 0; a < imageHandler.lim.Count; ++a)
+            for (int a = 0; a < imageHandler.list_Limit.Count; ++a)
             {
                 if (
-                    ((imageHandler.lim.ElementAt(a).x1 <= x && x <= imageHandler.lim.ElementAt(a).x2) &&
-                    (imageHandler.lim.ElementAt(a).y1 <= y && y <= imageHandler.lim.ElementAt(a).y2)) &&
-                    ((imageHandler.lim.ElementAt(a).x1 <= x + m && x + m <= imageHandler.lim.ElementAt(a).x2) &&
-                    (imageHandler.lim.ElementAt(a).y1 <= y && y <= imageHandler.lim.ElementAt(a).y2)) &&
-                    ((imageHandler.lim.ElementAt(a).x1 <= x && x <= imageHandler.lim.ElementAt(a).x2) &&
-                    (imageHandler.lim.ElementAt(a).y1 <= y + n && y + n <= imageHandler.lim.ElementAt(a).y2)) &&
-                    ((imageHandler.lim.ElementAt(a).x1 <= x + m && x + m <= imageHandler.lim.ElementAt(a).x2) &&
-                    (imageHandler.lim.ElementAt(a).y1 <= y + n && y + n <= imageHandler.lim.ElementAt(a).y2))
+                    ((imageHandler.list_Limit.ElementAt(a).x1 <= x && x <= imageHandler.list_Limit.ElementAt(a).x2) &&
+                    (imageHandler.list_Limit.ElementAt(a).y1 <= y && y <= imageHandler.list_Limit.ElementAt(a).y2)) &&
+                    ((imageHandler.list_Limit.ElementAt(a).x1 <= x + m && x + m <= imageHandler.list_Limit.ElementAt(a).x2) &&
+                    (imageHandler.list_Limit.ElementAt(a).y1 <= y && y <= imageHandler.list_Limit.ElementAt(a).y2)) &&
+                    ((imageHandler.list_Limit.ElementAt(a).x1 <= x && x <= imageHandler.list_Limit.ElementAt(a).x2) &&
+                    (imageHandler.list_Limit.ElementAt(a).y1 <= y + n && y + n <= imageHandler.list_Limit.ElementAt(a).y2)) &&
+                    ((imageHandler.list_Limit.ElementAt(a).x1 <= x + m && x + m <= imageHandler.list_Limit.ElementAt(a).x2) &&
+                    (imageHandler.list_Limit.ElementAt(a).y1 <= y + n && y + n <= imageHandler.list_Limit.ElementAt(a).y2))
                     )
                     return true;
             }
@@ -115,17 +115,17 @@ namespace PruebaCS3 {
 
         private bool insideFrames(int x1, int y1, int x2, int y2)
         {
-            for (int a = 0; a < imageHandler.lim.Count; ++a)
+            for (int a = 0; a < imageHandler.list_Limit.Count; ++a)
             {
                 if (
-                    ((imageHandler.lim.ElementAt(a).x1 <= x1 && x1 <= imageHandler.lim.ElementAt(a).x2) &&
-                    (imageHandler.lim.ElementAt(a).y1 <= y1 && y1 <= imageHandler.lim.ElementAt(a).y2)) ||
-                    ((imageHandler.lim.ElementAt(a).x1 <= x2 && x2 <= imageHandler.lim.ElementAt(a).x2) &&
-                    (imageHandler.lim.ElementAt(a).y1 <= y1 && y1 <= imageHandler.lim.ElementAt(a).y2)) ||
-                    ((imageHandler.lim.ElementAt(a).x1 <= x1 && x1 <= imageHandler.lim.ElementAt(a).x2) &&
-                    (imageHandler.lim.ElementAt(a).y1 <= y2 && y2 <= imageHandler.lim.ElementAt(a).y2)) ||
-                    ((imageHandler.lim.ElementAt(a).x1 <= x2 && x2 <= imageHandler.lim.ElementAt(a).x2) &&
-                    (imageHandler.lim.ElementAt(a).y1 <= y2 && y2 <= imageHandler.lim.ElementAt(a).y2))
+                    ((imageHandler.list_Limit.ElementAt(a).x1 <= x1 && x1 <= imageHandler.list_Limit.ElementAt(a).x2) &&
+                    (imageHandler.list_Limit.ElementAt(a).y1 <= y1 && y1 <= imageHandler.list_Limit.ElementAt(a).y2)) ||
+                    ((imageHandler.list_Limit.ElementAt(a).x1 <= x2 && x2 <= imageHandler.list_Limit.ElementAt(a).x2) &&
+                    (imageHandler.list_Limit.ElementAt(a).y1 <= y1 && y1 <= imageHandler.list_Limit.ElementAt(a).y2)) ||
+                    ((imageHandler.list_Limit.ElementAt(a).x1 <= x1 && x1 <= imageHandler.list_Limit.ElementAt(a).x2) &&
+                    (imageHandler.list_Limit.ElementAt(a).y1 <= y2 && y2 <= imageHandler.list_Limit.ElementAt(a).y2)) ||
+                    ((imageHandler.list_Limit.ElementAt(a).x1 <= x2 && x2 <= imageHandler.list_Limit.ElementAt(a).x2) &&
+                    (imageHandler.list_Limit.ElementAt(a).y1 <= y2 && y2 <= imageHandler.list_Limit.ElementAt(a).y2))
                     )
                     return true;
             }
@@ -179,13 +179,13 @@ namespace PruebaCS3 {
                     cantidad = 0;
                     do
                     {
-                        Dialogo sc = new Dialogo();
+                        Dialog sc = new Dialog();
                         sc.textBoxFactor.Text = "10";
                         sc.ShowDialog();
                         factor = (int) sc.factor;
                         entradaExitosa = sc.entradaExitosa;
                         if (!entradaExitosa)
-                            MessageBox.Show("Debe introducir un numero entero entre 1 y 1000", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("An integer number between 1 and 1000 must be chosen", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     } while (!entradaExitosa);
                     if (DialogResult.OK == oDlg.ShowDialog())
                     {
@@ -234,14 +234,14 @@ namespace PruebaCS3 {
                         if (!outsideP && !insideF && !factorNoV)
                         {
                             imageHandler.frame(factor, x1, y1, x2, y2);
-                            imageHandler.lim.Add(new Limite(x1, y1, x2, y2));
+                            imageHandler.list_Limit.Add(new Limit(x1, y1, x2, y2));
                         }
                         if (outsideP)
-                            MessageBox.Show("Posiciones fuera de la hoja");
+                            MessageBox.Show("Position outside the paper");
                         if (insideF)
-                            MessageBox.Show("Posiciones dentro de algun marco");
+                            MessageBox.Show("Position inside a frame");
                         if (factorNoV)
-                            MessageBox.Show("Factor no valido");
+                            MessageBox.Show("Invalid factor");
                         this.Invalidate();
                         this.Cursor = Cursors.Default;
                     }
@@ -254,7 +254,7 @@ namespace PruebaCS3 {
                 {
                     do
                     {
-                        Dimensiones dim = new Dimensiones();
+                        Dimensions dim = new Dimensions();
                         dim.textBoxM.Text = "40";
                         dim.textBoxN.Text = "20";
                         dim.ShowDialog();
@@ -262,7 +262,7 @@ namespace PruebaCS3 {
                         n = (int)dim.factorN;
                         entradaExitosa = dim.entradaExitosa;
                         if (!entradaExitosa)
-                            MessageBox.Show("Debe introducir numeros enteros entre 1 y 10000", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("An integer number between 1 and 1000 must be chosen", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     } while (!entradaExitosa);
                     medidaApropiada = false;
                     do
@@ -287,7 +287,7 @@ namespace PruebaCS3 {
                             q = (int)dim.factorN;
                             entradaExitosa = dim.entradaExitosa;
                             if (!entradaExitosa)
-                                MessageBox.Show("Debe introducir un numero entero entre 1 y 1000", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("An integer number between 1 and 1000 must be chosen", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         } while (!entradaExitosa);
                         string fileName;
                         fileName = "";
@@ -318,12 +318,12 @@ namespace PruebaCS3 {
                         this.Cursor = Cursors.Default;
                         if (outsideP)
                         {
-                            MessageBox.Show("Posicion fuera de la hoja");
+                            MessageBox.Show("Position outside the paper");
                             break;
                         }
                         if (!insideF)
                         {
-                            MessageBox.Show("Posicion fuera de algun marco");
+                            MessageBox.Show("Position outside the frame");
                             break;
                         }
                     } while(!medidaApropiada);
@@ -370,14 +370,14 @@ namespace PruebaCS3 {
         private void menuItemInfo_Click(object sender, EventArgs e)
         {
             initThings();
-            Informacion info = new Informacion(imageHandler);
+            Information info = new Information(imageHandler);
             info.Show();
         }
 
         private void menuItemHistograms_Click(object sender, EventArgs e)
         {
             initThings();
-            Histogramas Histo = new Histogramas(imageHandler.redH,imageHandler.greenH,imageHandler.blueH);
+            Histogram Histo = new Histogram(imageHandler.redH,imageHandler.greenH,imageHandler.blueH);
             Histo.Show();
         }
 
@@ -407,7 +407,7 @@ namespace PruebaCS3 {
 
         private void menuItemContrast_Click(object sender, EventArgs e)
         {
-            Contraste Contrast = new Contraste(imageHandler.redH, imageHandler.greenH, imageHandler.blueH);
+            Contrast Contrast = new Contrast(imageHandler.redH, imageHandler.greenH, imageHandler.blueH);
             Contrast.ShowDialog();
             if (Contrast.acepto)
             {
@@ -436,7 +436,7 @@ namespace PruebaCS3 {
 
         private void menuItemPrecalculus_Click(object sender, EventArgs e)
         {
-            Opciones1 o1 = new Opciones1();
+            MosaicDialog o1 = new MosaicDialog();
             o1.ShowDialog();
             this.Cursor = Cursors.WaitCursor;
             imageHandler.RestorePrevious();
@@ -530,13 +530,13 @@ namespace PruebaCS3 {
             int[] vectorEnviar = new int[9];
             do
             {
-                TresPorTres tpt = new TresPorTres();
+                ThreePerThree tpt = new ThreePerThree();
                 tpt.ShowDialog();
                 for (int a = 0; a < 9; ++a)
-                    vectorEnviar[a] = (int)tpt.nud[a].Value;
+                    vectorEnviar[a] = (int)tpt.numericUpDown[a].Value;
                 pulsoAceptar = tpt.pulsoAceptar;
                 if (!pulsoAceptar)
-                    MessageBox.Show("Por favor, acepte la matriz que ha indicado para aplicar la convolucion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Please, chose the matrix to apply the convolution", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             } while (!pulsoAceptar);
             for (int a = 0; a < 7; ++a)
             {
@@ -571,13 +571,13 @@ namespace PruebaCS3 {
             int[] vectorEnviar = new int[25];
             do
             {
-                CincoPorCinco tpt = new CincoPorCinco();
+                CustomFivePerFive tpt = new CustomFivePerFive();
                 tpt.ShowDialog();
                 for (int a = 0; a < 25; ++a)
-                    vectorEnviar[a] = (int)tpt.nud[a].Value;
+                    vectorEnviar[a] = (int)tpt.numericUpDown[a].Value;
                 pulsoAceptar = tpt.pulsoAceptar;
                 if (!pulsoAceptar)
-                    MessageBox.Show("Por favor, acepte la matriz que ha indicado para aplicar la convolucion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Please, chose the matrix to apply the convolution", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             } while (!pulsoAceptar);
             for (int a = 0; a < 7; ++a)
             {
@@ -612,13 +612,13 @@ namespace PruebaCS3 {
             int[] vectorEnviar = new int[49];
             do
             {
-                SietePorSiete tpt = new SietePorSiete();
+                CustomSevenPerSeven tpt = new CustomSevenPerSeven();
                 tpt.ShowDialog();
                 for (int a = 0; a < 49; ++a)
-                    vectorEnviar[a] = (int)tpt.nud[a].Value;
+                    vectorEnviar[a] = (int)tpt.numericUpDown[a].Value;
                 pulsoAceptar = tpt.pulsoAceptar;
                 if (!pulsoAceptar)
-                    MessageBox.Show("Por favor, acepte la matriz que ha indicado para aplicar la convolucion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Please, chose the matrix to apply the convolution", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             } while (!pulsoAceptar);
             for (int a = 0; a < 7; ++a)
             {
@@ -783,10 +783,10 @@ namespace PruebaCS3 {
             bool entradaExitosa;
             int m;
             int n;
-            imageHandler.lim.Clear();
+            imageHandler.list_Limit.Clear();
             do
             {
-                Dimensiones dim = new Dimensiones();
+                Dimensions dim = new Dimensions();
                 dim.textBoxM.Text = "600";
                 dim.textBoxN.Text = "450";
                 dim.ShowDialog();
@@ -794,7 +794,7 @@ namespace PruebaCS3 {
                 n = (int)dim.factorN;
                 entradaExitosa = dim.entradaExitosa;
                 if (!entradaExitosa)
-                    MessageBox.Show("Debe introducir numeros enteros entre 1 y 10000", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("An integer number between 1 and 1000 must be chosen", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             } while (!entradaExitosa);
             this.Cursor = Cursors.WaitCursor;
             imageHandler.RestorePrevious();
@@ -885,13 +885,13 @@ namespace PruebaCS3 {
             double factor;
             bool entradaExitosa;
             do {
-                Dialogo sc = new Dialogo();
+                Dialog sc = new Dialog();
                 sc.textBoxFactor.Text = "100";
                 sc.ShowDialog();
                 factor = sc.factor;
                 entradaExitosa = sc.entradaExitosa;
                 if (!entradaExitosa)
-                    MessageBox.Show("Debe introducir un numero entero entre 1 y 1000", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("An integer number between 1 and 1000 must be chosen", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             } while (!entradaExitosa);
             this.Cursor = Cursors.WaitCursor;
             imageHandler.RestorePrevious();
@@ -907,13 +907,13 @@ namespace PruebaCS3 {
             double factor;
             bool entradaExitosa;
             do {
-                Dialogo sc = new Dialogo();
+                Dialog sc = new Dialog();
                 sc.textBoxFactor.Text = "360";
                 sc.ShowDialog();
                 factor = sc.factor;
                 entradaExitosa = sc.entradaExitosa;
                 if (!entradaExitosa)
-                    MessageBox.Show("Debe introducir un numero entero entre 1 y 1000", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("An integer number between 1 and 1000 must be chosen", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             } while (!entradaExitosa);
             this.Cursor = Cursors.WaitCursor;
             imageHandler.RestorePrevious();
@@ -929,13 +929,13 @@ namespace PruebaCS3 {
             double factor;
             bool entradaExitosa;
             do {
-                Dialogo sc = new Dialogo();
+                Dialog sc = new Dialog();
                 sc.textBoxFactor.Text = "360";
                 sc.ShowDialog();
                 factor = sc.factor;
                 entradaExitosa = sc.entradaExitosa;
                 if (!entradaExitosa)
-                    MessageBox.Show("Debe introducir un numero entero entre 1 y 1000", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("An integer number between 1 and 1000 must be chosen", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             } while (!entradaExitosa);
             this.Cursor = Cursors.WaitCursor;
             imageHandler.RestorePrevious();
@@ -959,8 +959,8 @@ namespace PruebaCS3 {
         int lastX;
         int lastY;
         int cantidad;
-        Manejador imageHandler = new Manejador();
-        Manejador imageOriginal = new Manejador();
+        MainController imageHandler = new MainController();
+        MainController imageOriginal = new MainController();
 
     }
 
