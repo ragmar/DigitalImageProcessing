@@ -12,12 +12,12 @@ using System.IO;
 namespace PruebaCS3
 {
 
-    public partial class Informacion : Form
+    public partial class Information : Form
     {
 
         Manejador imageHandler;
 
-        public Informacion(Manejador imageHandler)
+        public Information(Manejador imageHandler)
         {
             this.imageHandler = imageHandler;
             InitializeComponent();
@@ -25,11 +25,11 @@ namespace PruebaCS3
 
         private void ImageInfo_Load(object sender, EventArgs e)
         {
-            labelDimensiones.Text = imageHandler.CurrentBitmap.Width + " x " + imageHandler.CurrentBitmap.Height;
-            labelColores.Text = "" + imageHandler.colors;
+            labelDimension.Text = imageHandler.CurrentBitmap.Width + " x " + imageHandler.CurrentBitmap.Height;
+            labelColor.Text = "" + imageHandler.colors;
         }
 
-        private void buttonAceptar_Click(object sender, EventArgs e)
+        private void buttonOk_Click(object sender, EventArgs e)
         {
             this.Close();
         }

@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace PruebaCS3
 {
-    public partial class Contraste : Form
+    public partial class Contrast : Form
     {
-        public Contraste(long[] red, long[] green, long[] blue)
+        public Contrast(long[] red, long[] green, long[] blue)
         {
             InitializeComponent();
             acepto = false;

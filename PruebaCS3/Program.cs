@@ -14,7 +14,7 @@ namespace PruebaCS3 {
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Ventana());
+            Application.Run(new DialogController());
 
         }
 

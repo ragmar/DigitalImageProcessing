@@ -1,6 +1,6 @@
 ﻿namespace PruebaCS3
 {
-    partial class Histogramas
+    partial class Histogram
     {
         /// <summary>
         /// Required designer variable.

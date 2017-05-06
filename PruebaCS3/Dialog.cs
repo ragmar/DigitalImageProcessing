@@ -11,15 +11,15 @@ using System.Windows.Forms;
 namespace PruebaCS3
 {
 
-    public partial class Dialogo : Form
+    public partial class Dialog : Form
     {
 
-        public Dialogo()
+        public Dialog()
         {
             InitializeComponent();
         }
 
-        private void buttonAceptar_Click(object sender, EventArgs e)
+        private void buttonOk_Click(object sender, EventArgs e)
         {
             string z = this.textBoxFactor.Text;
             entradaExitosa = true;

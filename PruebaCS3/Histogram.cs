@@ -9,10 +9,10 @@ using System.Windows.Forms;
 
 namespace PruebaCS3
 {
-    public partial class Histogramas : Form
+    public partial class Histogram : Form
     {
 
-        public Histogramas(long[] red, long[] green, long[] blue)
+        public Histogram(long[] red, long[] green, long[] blue)
         {
             InitializeComponent();
 
