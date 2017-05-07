@@ -47,7 +47,7 @@
             this.labelIndicationsImageDB.Name = "labelIndicationsImageDB";
             this.labelIndicationsImageDB.Size = new System.Drawing.Size(216, 26);
             this.labelIndicationsImageDB.TabIndex = 0;
-            this.labelIndicationsImageDB.Text = "Chose the path to the image database. Example:\nC:\\Journey\\Manhattan";
+            this.labelIndicationsImageDB.Text = "Choose the path to the image database. Example:\nC:\\Journey\\Manhattan";
             // 
             // labelIndicaciones2
             // 

@@ -185,7 +185,7 @@ namespace DigitalImageProcessing {
                         factor = (int) sc.factor;
                         entradaExitosa = sc.entradaExitosa;
                         if (!entradaExitosa)
-                            MessageBox.Show("An integer number between 1 and 1000 must be chosen", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("An integer number between 1 and 1000 must be choosen", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     } while (!entradaExitosa);
                     if (DialogResult.OK == oDlg.ShowDialog())
                     {
@@ -262,7 +262,7 @@ namespace DigitalImageProcessing {
                         n = (int)dim.factorN;
                         entradaExitosa = dim.entradaExitosa;
                         if (!entradaExitosa)
-                            MessageBox.Show("An integer number between 1 and 1000 must be chosen", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("An integer number between 1 and 1000 must be choosen", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     } while (!entradaExitosa);
                     medidaApropiada = false;
                     do
@@ -287,7 +287,7 @@ namespace DigitalImageProcessing {
                             q = (int)dim.factorN;
                             entradaExitosa = dim.entradaExitosa;
                             if (!entradaExitosa)
-                                MessageBox.Show("An integer number between 1 and 1000 must be chosen", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("An integer number between 1 and 1000 must be choosen", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         } while (!entradaExitosa);
                         string fileName;
                         fileName = "";
@@ -536,7 +536,7 @@ namespace DigitalImageProcessing {
                     vectorEnviar[a] = (int)tpt.numericUpDown[a].Value;
                 pulsoAceptar = tpt.pulsoAceptar;
                 if (!pulsoAceptar)
-                    MessageBox.Show("Please, chose the matrix to apply the convolution", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Please, choose the matrix to apply the convolution", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             } while (!pulsoAceptar);
             for (int a = 0; a < 7; ++a)
             {
@@ -577,7 +577,7 @@ namespace DigitalImageProcessing {
                     vectorEnviar[a] = (int)tpt.numericUpDown[a].Value;
                 pulsoAceptar = tpt.pulsoAceptar;
                 if (!pulsoAceptar)
-                    MessageBox.Show("Please, chose the matrix to apply the convolution", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Please, choose the matrix to apply the convolution", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             } while (!pulsoAceptar);
             for (int a = 0; a < 7; ++a)
             {
@@ -618,7 +618,7 @@ namespace DigitalImageProcessing {
                     vectorEnviar[a] = (int)tpt.numericUpDown[a].Value;
                 pulsoAceptar = tpt.pulsoAceptar;
                 if (!pulsoAceptar)
-                    MessageBox.Show("Please, chose the matrix to apply the convolution", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Please, choose the matrix to apply the convolution", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             } while (!pulsoAceptar);
             for (int a = 0; a < 7; ++a)
             {
@@ -760,7 +760,8 @@ namespace DigitalImageProcessing {
             imageHandler.createGrayscaleCopy();
             imageHandler.binarize();
             imageHandler.applyDilation(matrixToUse);
-            imageHandler.applyTopHat(matrixToUse, 0);
+            imageHandler.applyErosion(matrixToUse);
+            imageHandler.applyTopHat(matrixToUse, true);
             this.Invalidate();
             this.Cursor = Cursors.Default;
         }
@@ -773,7 +774,8 @@ namespace DigitalImageProcessing {
             imageHandler.createGrayscaleCopy();
             imageHandler.binarize();
             imageHandler.applyErosion(matrixToUse);
-            imageHandler.applyTopHat(matrixToUse, 1);
+            imageHandler.applyDilation(matrixToUse);
+            imageHandler.applyTopHat(matrixToUse, false);
             this.Invalidate();
             this.Cursor = Cursors.Default;
         }
@@ -794,7 +796,7 @@ namespace DigitalImageProcessing {
                 n = (int)dim.factorN;
                 entradaExitosa = dim.entradaExitosa;
                 if (!entradaExitosa)
-                    MessageBox.Show("An integer number between 1 and 1000 must be chosen", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("An integer number between 1 and 1000 must be choosen", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             } while (!entradaExitosa);
             this.Cursor = Cursors.WaitCursor;
             imageHandler.RestorePrevious();
@@ -891,7 +893,7 @@ namespace DigitalImageProcessing {
                 factor = sc.factor;
                 entradaExitosa = sc.entradaExitosa;
                 if (!entradaExitosa)
-                    MessageBox.Show("An integer number between 1 and 1000 must be chosen", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("An integer number between 1 and 1000 must be choosen", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             } while (!entradaExitosa);
             this.Cursor = Cursors.WaitCursor;
             imageHandler.RestorePrevious();
@@ -913,7 +915,7 @@ namespace DigitalImageProcessing {
                 factor = sc.factor;
                 entradaExitosa = sc.entradaExitosa;
                 if (!entradaExitosa)
-                    MessageBox.Show("An integer number between 1 and 1000 must be chosen", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("An integer number between 1 and 1000 must be choosen", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             } while (!entradaExitosa);
             this.Cursor = Cursors.WaitCursor;
             imageHandler.RestorePrevious();
@@ -935,7 +937,7 @@ namespace DigitalImageProcessing {
                 factor = sc.factor;
                 entradaExitosa = sc.entradaExitosa;
                 if (!entradaExitosa)
-                    MessageBox.Show("An integer number between 1 and 1000 must be chosen", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("An integer number between 1 and 1000 must be choosen", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             } while (!entradaExitosa);
             this.Cursor = Cursors.WaitCursor;
             imageHandler.RestorePrevious();

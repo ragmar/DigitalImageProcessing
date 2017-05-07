@@ -430,14 +430,14 @@ namespace DigitalImageProcessing {
         /// apply filter TopHat on the Bitmap
         /// </summary>
         /// <param name="matrixToUse"></param>
-        /// <param name="which"></param>
-        public void applyTopHat(int matrixToUse, int which)
+        /// <param name="isWhite"></param>
+        public void applyTopHat(int matrixToUse, bool isWhite)
         {
             Bitmap temp = (Bitmap)_currentBitmap;
             Bitmap bmap = (Bitmap)temp.Clone();
             int red, green, blue;
             red = green = blue = 0;
-            if (which == 0)
+            if (isWhite)
             {
                 for (int a = 3; a < _extended.Width - 3; ++a)
                 {

@@ -226,19 +226,19 @@ namespace DigitalImageProcessing {
             // menuItemCustom3x3
             // 
             this.menuItemCustom3x3.Index = 0;
-            this.menuItemCustom3x3.Text = "&Custom 3x3 ...";
+            this.menuItemCustom3x3.Text = "&Custom 3x3";
             this.menuItemCustom3x3.Click += new System.EventHandler(this.menuItemCustom3x3_Click);
             // 
             // menuItemCustom5x5
             // 
             this.menuItemCustom5x5.Index = 1;
-            this.menuItemCustom5x5.Text = "&Custom 5x5 ...";
+            this.menuItemCustom5x5.Text = "&Custom 5x5";
             this.menuItemCustom5x5.Click += new System.EventHandler(this.menuItemCustom5x5_Click);
             // 
             // menuItemCustom7x7
             // 
             this.menuItemCustom7x7.Index = 2;
-            this.menuItemCustom7x7.Text = "&Custom 7x7 ...";
+            this.menuItemCustom7x7.Text = "&Custom 7x7";
             this.menuItemCustom7x7.Click += new System.EventHandler(this.menuItemCustom7x7_Click);
             // 
             // menuItemApply

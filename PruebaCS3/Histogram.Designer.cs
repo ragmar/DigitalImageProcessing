@@ -241,7 +241,7 @@
             this.Ok.UseVisualStyleBackColor = true;
             this.Ok.Click += new System.EventHandler(this.Ok_Click);
             // 
-            // Histogramas
+            // Histogram
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -265,8 +265,8 @@
             this.Controls.Add(this.panelBlue);
             this.Controls.Add(this.panelGreen);
             this.Controls.Add(this.panelRed);
-            this.Name = "Histogramas";
-            this.Text = "Histogramas";
+            this.Name = "Histogram";
+            this.Text = "Histogram";
             this.panelGreen.ResumeLayout(false);
             this.panelGreen.PerformLayout();
             this.panelBlue.ResumeLayout(false);

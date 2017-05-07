@@ -32,7 +32,7 @@
 
             this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "TresPorTres";
+            this.Text = "ThreePerThree";
             this.Size = new System.Drawing.Size(300, 300);
 
             this.labelIndications = new System.Windows.Forms.Label();
