@@ -1,5 +1,5 @@
 # Digital Image Processing
-This is a project created by Alejandro Sans (sansalejandro@gmail.com) and Víctor Felipe as a project for a Digital Image Processing course (Universidad Central de Venezuela). 
+This is a project created by Alejandro Sans (sansalejandro@gmail.com) and Víctor Felipe (vjfn1990@gmail.com) as a project for a Digital Image Processing course (Universidad Central de Venezuela). 
 
 This project shows multiple techniques of Image Processing made on a simple application in C#
 
